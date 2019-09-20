@@ -6,4 +6,4 @@ def index(request):
     return render(request, 'autism/home.html')
 
 def predict(request):
-    return render(request, )
+    return render(request, 'autism/predict.html')

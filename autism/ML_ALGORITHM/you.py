@@ -16,7 +16,7 @@ def getPrediction(x):
 
     model.compile(loss='binary_crossentropy',optimizer='adam', metrics=['accuracy'])
     model.summary()
-    model.fit(X,Y, epochs=100, batch_size=10)
+    model.fit(X,Y, epochs=200, batch_size=10)
    
     list = []
     list.append(x)

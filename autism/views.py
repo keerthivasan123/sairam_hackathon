@@ -51,3 +51,37 @@ def predicted(request):
     else:  
         form = Predict()  
     return render(request,'autism/predicted.html',{'form':form})
+
+def restapi(request):
+        type1 = request.GET.get('value1', -1)
+        type2 = request.GET.get('value2', -1)
+        type3 = request.GET.get('value3', -1)
+        type4 = request.GET.get('value4', -1)
+        type5 = request.GET.get('value5', -1)
+        type6 = request.GET.get('value6', -1)
+        type7 = request.GET.get('value7', -1)
+        type8 = request.GET.get('value8', -1)
+        x= []
+        new_list = []
+        x.append(type1)
+        x.append(type2)
+        x.append(type3)
+        x.append(type4)
+        x.append(type5)
+        x.append(type6)
+        x.append(type7)
+        x.append(type8)
+        list = you.getPrediction(x)
+        yes = list[0]
+        no = 100-list[0]
+        new_list.append(yes)
+        new_list.append(no)
+        label = ['yes','no']
+        zipped_list = zip(list)
+        context = {
+        'zipped_list': zipped_list,
+        'list': new_list,
+        'label': label,
+        }
+        print(list)
+        return render(request, 'autism/predicted.html',context)
